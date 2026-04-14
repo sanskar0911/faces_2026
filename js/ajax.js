@@ -1,0 +1,11 @@
+$('#regForm').submit(function(e){
+ e.preventDefault();
+ $.ajax({
+  url:'php/register.php',
+  type:'POST',
+  data:$(this).serialize(),
+  success:function(res){
+   $('#msg').hide().html(res).fadeIn();
+  }
+ });
+});

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration | FACES 2026</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--primary-neon); }
+        .form-control { width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 5px; color: white; }
+        .form-control:focus { outline: none; border-color: var(--primary-neon); background: rgba(255,255,255,0.1); }
+        #resp-msg { margin-top: 1rem; padding: 1rem; border-radius: 5px; display: none; }
+    </style>
+</head>
+<body>
+    <nav id="navbar" class="sticky">
+        <a href="index.html" class="brand">FACES 2026</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="register.html" class="btn-primary">Register Now</a>
+    </nav>
+
+    <section style="margin-top: 100px;">
+        <div class="glass" style="max-width: 800px; margin: 0 auto; padding: 3rem;">
+            <div class="section-title">
+                <h2>Join the Arena</h2>
+                <p>Fill in your details to register for FACES 2026.</p>
+            </div>
+
+            <form id="registrationForm">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="full_name" class="form-control" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" class="form-control" required placeholder="john@example.com">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" class="form-control" required placeholder="+91 XXXXX XXXXX">
+                    </div>
+                    <div class="form-group">
+                        <label>College Name</label>
+                        <input type="text" name="college_name" class="form-control" required placeholder="FCRIT Vashi">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Branch</label>
+                        <input type="text" name="branch" class="form-control" required placeholder="Comps / IT / Mech">
+                    </div>
+                    <div class="form-group">
+                        <label>Year</label>
+                        <select name="year" class="form-control" required>
+                            <option value="FE">First Year</option>
+                            <option value="SE">Second Year</option>
+                            <option value="TE">Third Year</option>
+                            <option value="BE">Fourth Year</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select name="gender" class="form-control" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Selected Sport</label>
+                    <select name="selected_sport" id="sportSelect" class="form-control" required>
+                        <option value="Football">Football</option>
+                        <option value="Cricket">Cricket</option>
+                        <option value="Basketball">Basketball</option>
+                        <option value="Badminton">Badminton</option>
+                        <option value="Athletics">Athletics</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Emergency Contact</label>
+                    <input type="tel" name="emergency_contact" class="form-control" required placeholder="Guardian's Number">
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn-primary" style="width: 100%; margin-top: 1rem;">Submit Registration</button>
+            </form>
+
+            <div id="resp-msg"></div>
+        </div>
+    </section>
+
+    <!-- AJAX & Validation -->
+    <script>
+        $(document).ready(function(){
+            // Pre-select sport if in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if(urlParams.has('sport')){
+                $('#sportSelect').val(urlParams.get('sport'));
+            }
+
+            $('#registrationForm').on('submit', function(e){
+                e.preventDefault();
+                $('#submitBtn').text('Processing...').prop('disabled', true);
+                
+                $.ajax({
+                    url: 'php/register_process.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response){
+                        const data = JSON.parse(response);
+                        $('#resp-msg').fadeIn().html(data.message);
+                        if(data.status === 'success'){
+                            $('#resp-msg').css('background', 'rgba(57, 255, 20, 0.2)').css('color', 'var(--primary-neon)');
+                            $('#registrationForm')[0].reset();
+                        } else {
+                            $('#resp-msg').css('background', 'rgba(255, 0, 0, 0.2)').css('color', '#ff4d4d');
+                        }
+                        $('#submitBtn').text('Submit Registration').prop('disabled', false);
+                    },
+                    error: function(){
+                        alert('Something went wrong. Please try again.');
+                        $('#submitBtn').text('Submit Registration').prop('disabled', false);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="copyright">
+            &copy; 2026 FACES. All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>

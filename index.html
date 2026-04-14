@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FACES 2026 | Annual Sports Festival - FCRIT</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Official website for FACES 2026, the annual sports festival of FCRIT Vashi. Compete, Celebrate, Conquer.">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <!-- Loading Spinner -->
+    <div id="loader" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; display:flex; justify-content:center; align-items:center;">
+        <div class="spinner" style="width:50px; height:50px; border:5px solid #333; border-top:5px solid #39FF14; border-radius:50%; animation:spin 1s linear infinite;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="brand">FACES 2026</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="register.html" class="btn-primary">Register Now</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="animate-up">FACES 2026</h1>
+        <p class="animate-up" style="animation-delay: 0.2s;">Compete. Celebrate. Conquer.</p>
+        
+        <!-- Countdown Timer -->
+        <div class="countdown glass animate-up" style="animation-delay: 0.4s;">
+            <div class="countdown-item">
+                <span id="days">00</span>
+                <label>Days</label>
+            </div>
+            <div class="countdown-item">
+                <span id="hours">00</span>
+                <label>Hours</label>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes">00</span>
+                <label>Mins</label>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds">00</span>
+                <label>Secs</label>
+            </div>
+        </div>
+
+        <div class="hero-btns animate-up" style="animation-delay: 0.6s; margin-top: 3rem;">
+            <a href="events.html" class="btn-primary" style="background:transparent; border:2px solid var(--primary-neon); color:var(--primary-neon); margin-right: 1rem;">Explore Events</a>
+            <a href="register.html" class="btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section id="highlights">
+        <div class="section-title">
+            <h2>Quick Highlights</h2>
+        </div>
+        <div class="events-grid">
+            <div class="glass" style="padding: 2rem; text-align: center;">
+                <h3 style="font-size: 2.5rem; color: var(--primary-neon);">15 Feb</h3>
+                <p>Event Starts</p>
+            </div>
+            <div class="glass" style="padding: 2rem; text-align: center;">
+                <h3 style="font-size: 2.5rem; color: var(--secondary-neon);">Vashi</h3>
+                <p>Venue: FCRIT Grounds</p>
+            </div>
+            <div class="glass" style="padding: 2rem; text-align: center;">
+                <h3 style="font-size: 2.5rem; color: var(--accent-neon);">₹50K+</h3>
+                <p>Prize Pool</p>
+            </div>
+            <div class="glass" style="padding: 2rem; text-align: center;">
+                <h3 style="font-size: 2.5rem; color: #FFF;">8+</h3>
+                <p>Major Sports</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Sneak Peek -->
+    <section id="about-peek" style="background: rgba(255,255,255,0.02);">
+        <div class="container" style="max-width: 1000px; margin: 0 auto; text-align: center;">
+            <div class="section-title">
+                <h2>The Legacy of FACES</h2>
+            </div>
+            <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem;">
+                FACES (Fr. Agnel’s Competition for Engineering Students) is the most awaited sports festival in Navi Mumbai. 
+                With a legacy of excellence and sportsmanship, we bring students together to push their limits.
+            </p>
+            <a href="about.html" class="btn-primary" style="background: transparent; border: 1px solid var(--text-muted); color: var(--text-muted);">Read Full Story</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 class="brand">FACES 2026</h4>
+                <p style="color: var(--text-muted);">The annual sports saga of FCRIT, Vashi. Witness the glory.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="register.html">Registration</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <p>Follow us on Instagram and stay updated with live scores.</p>
+                <div style="margin-top: 1rem; font-size: 1.5rem; display: flex; gap: 1rem;">
+                    <!-- Icons would go here -->
+                    #FACES2026
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 FACES. All Rights Reserved. Designed for FCRIT Vashi.
+        </div>
+    </footer>
+
+    <style>
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+/* FACES 2026 - Master Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Outfit:wght@300;600;800&display=swap');
+
+:root {
+    --primary-neon: #39FF14; /* Neon Green */
+    --secondary-neon: #00F3FF; /* Cyan */
+    --accent-neon: #FF00E5; /* Neon Pink */
+    --bg-dark: #0A0A0B;
+    --bg-card: rgba(255, 255, 255, 0.05);
+    --text-main: #FFFFFF;
+    --text-muted: #B0B0B0;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --transition-fast: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+h1, h2, h3, .brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Glassmorphism Helper */
+.glass {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+}
+
+/* Sticky Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.5s;
+}
+
+nav.sticky {
+    padding: 1rem 5%;
+    background: rgba(10, 10, 11, 0.9);
+    border-bottom: 2px solid var(--primary-neon);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.nav-links a:hover {
+    color: var(--primary-neon);
+    text-shadow: 0 0 10px var(--primary-neon);
+}
+
+.btn-primary {
+    background: var(--primary-neon);
+    color: black;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(57, 255, 20, 0.6);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--primary-neon), var(--secondary-neon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+/* Countdown Timer */
+.countdown {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.countdown-item {
+    padding: 1.5rem;
+    min-width: 100px;
+    text-align: center;
+}
+
+.countdown-item span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-neon);
+}
+
+.countdown-item label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* Sections Styling */
+section {
+    padding: 5rem 10%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary-neon);
+}
+
+/* Event Cards */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.event-card {
+    overflow: hidden;
+    transition: 0.4s;
+    position: relative;
+}
+
+.event-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.event-card:hover img {
+    scale: 1.1;
+    filter: brightness(0.7);
+}
+
+.event-content {
+    padding: 1.5rem;
+}
+
+.event-card h3 {
+    color: var(--primary-neon);
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background: #050505;
+    padding: 4rem 10% 2rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-col h4 {
+    margin-bottom: 1.5rem;
+    color: var(--primary-neon);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-up {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3rem; }
+    .hero p { font-size: 1.1rem; }
+    .nav-links { display: none; } /* Add burger menu logic later */
+}
